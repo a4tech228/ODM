@@ -1,8 +1,6 @@
 package TIIT;
 import java.lang.String;
-import java.util.Scanner;
-
-import static java.lang.StrictMath.sqrt;
+import java.util.Random;
 
 public class Sets {
     public static int i1, i2, i3, i5;
@@ -318,19 +316,71 @@ public class Sets {
 
     public static void dopolnenie() {
         Combining();
+        int zik=0;
+        int xr;
+        Random li=new Random();
         lol3 = Trans(str3);
         shit4 = shit3;
-        lol4 = lol1;
-        lol1 = lol3;
-        difference2();
-        System.out.println("1 дополнение: " + str3);
-        lol1 = lol4;
-        lol4 = lol2;
-        lol2 = lol3;
-        difference1();
-        System.out.println("2 дополнение: " + str3);
+        lol4=lol3;
+        lol3=new int[shit4+5];
+        for (int i=0;i<shit4;i++)
+        {
+            lol3[i]=lol4[i];
+        }
+        while (zik!=5)
+        {
+            shet2=0;
+            xr=li.nextInt(1000);
+            for (int i=0;i<shit4;i++)
+            {
+                if (lol3[i]!=xr) shet2++;
+            }
+            if (shet2==shit4)
+            {
+                lol3[shit4]=xr;
+                shit4++;
+                zik++;
+            }
+        }
+        str3 = "{";
+        shet2 = 0;
+        for (int i = 0; i < shit4; i++) {
+            shet1 = 0;
+            for (int j = 0; j < shit1; j++) {
+                if (lol3[i] != lol1[j]) shet1++;
+            }
+            if (shet1 == shit1) {
+                if (shet2 == 0) {
+                    str3 += str4.valueOf(lol3[i]);
+                    shet2++;
+                } else {
+                    str3 += ",";
+                    str3 += str4.valueOf(lol3[i]);
+                }
+            }
+        }
+        str3 += "}";
+        System.out.println("1 дополнение: "+str3);
+        str3 = "{";
+        shet2 = 0;
+        for (int i = 0; i < shit4; i++) {
+            shet1 = 0;
+            for (int j = 0; j < shit2; j++) {
+                if (lol3[i] != lol2[j]) shet1++;
+            }
+            if (shet1 == shit2) {
+                if (shet2 == 0) {
+                    str3 += str4.valueOf(lol3[i]);
+                    shet2++;
+                } else {
+                    str3 += ",";
+                    str3 += str4.valueOf(lol3[i]);
+                }
+            }
+        }
+        str3 += "}";
+        System.out.println("2 дополнение: "+str3);
     }
-
 
     public static void DekartovoProisv() {
         lol1 = Trans(str1);
@@ -356,6 +406,3 @@ public class Sets {
             System.out.println(str3);
         }
     }
-
-
-
